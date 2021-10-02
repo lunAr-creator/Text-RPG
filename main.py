@@ -90,7 +90,8 @@ def main_menu(CLEAR_SCREEN='clear'):
     print_block(create_load_menu)
     choice = get_input("\n  > ", ['1', '2', '3', '4'])
 
-    return choice
+    if choice == '4':
+        print_text('   Hey')
 
 if __name__ == '__main__':
     main_menu()

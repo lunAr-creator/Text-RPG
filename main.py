@@ -7,7 +7,9 @@ import datetime
 
 from os import system, name
 from typing import Dict, Any
+
 from ascii_art import *
+from colors import bcolors
 
 def get_input(string: str, valid_options: list) -> str:
     """
@@ -60,7 +62,7 @@ def main_menu(CLEAR_SCREEN='clear'):
     This is where everything to do with the main game is. This includes all functions in one
     way or another.
     """
-    __version__ = 0.1
+    __version__ = 0.2
     time.sleep(0.5)
     time.sleep(0.5)
     show_date_and_time = datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
@@ -80,10 +82,10 @@ def main_menu(CLEAR_SCREEN='clear'):
     print("\n")
 
     create_load_menu = {
-        " > [1] Create new game\n": 0.5,
-        " > [2] Load existing game\n": 0.5,
-        " > [3] End game\n": 0.5,
-        " > [4] Credits\n": 0.5
+        f" > [{bcolors.Green}1{bcolors.ResetAll}] Create new game\n": 0.5,
+        f" > [{bcolors.Green}2{bcolors.ResetAll}] Load existing game\n": 0.5,
+        f" > [{bcolors.Green}3{bcolors.ResetAll}] End game\n": 0.5,
+        f" > [{bcolors.Green}4{bcolors.ResetAll}] Credits\n": 0.5
     }
     print_block(create_load_menu)
     choice = get_input("\n  > ", ['1', '2', '3', '4'])

@@ -8,8 +8,17 @@ import datetime
 from os import system, name
 from typing import Dict, Any
 
+# ===============================================================================================
+# ========================================Game_Inports===========================================
+# ===============================================================================================
+
 from ascii_art import *
 from colors import bcolors
+from character import Character
+
+# ===============================================================================================
+# =========================================Functions=============================================
+# ===============================================================================================
 
 def get_input(string: str, valid_options: list) -> str:
     """
@@ -77,15 +86,15 @@ def main_menu(CLEAR_SCREEN='clear'):
     print(title1 + title2.rjust(118-a, " "))
     screen_line()
     time.sleep(0.5)
-    mountain_range()
+    logo2()
     screen_line()
     print("\n")
 
     create_load_menu = {
-        f" > [{bcolors.Green}1{bcolors.ResetAll}] Create new game\n": 0.5,
-        f" > [{bcolors.Green}2{bcolors.ResetAll}] Load existing game\n": 0.5,
-        f" > [{bcolors.Green}3{bcolors.ResetAll}] End game\n": 0.5,
-        f" > [{bcolors.Green}4{bcolors.ResetAll}] Credits\n": 0.5
+        " > [1] Create new game\n": 0.5,
+        " > [2] Load existing game\n": 0.5,
+        " > [3] End game\n": 0.5,
+        " > [4] Credits\n": 0.5
     }
     print_block(create_load_menu)
     choice = get_input("\n  > ", ['1', '2', '3', '4'])

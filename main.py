@@ -185,6 +185,7 @@ def main_menu(CLEAR_SCREEN='cls'):
     screen_line()
     time.sleep(0.5)
     logo2()
+    mountain_range()
     screen_line()
     print("\n")
 
@@ -207,6 +208,8 @@ def main_menu(CLEAR_SCREEN='cls'):
         }
 
         print_block(credits)
+        print()
+        logo()
 
 if __name__ == '__main__':
     main_menu()

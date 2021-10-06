@@ -1,9 +1,9 @@
-# Adventure Colosuss Text RPG
-A Text RPG made using Python, named Adventure Colosuss. It will feature interesting and thoughtful ascii-art including an engaging in-depth story. 
+# Adventure Colossus Text RPG
+A Text RPG made using Python, named Adventure Colossus. It will feature interesting gameplay and thoughtful ascii-art, including an engaging, in-depth story. 
 
 ## Loading Screen and gameplay preview
-<img height="200" src="loading_screen.png">
-<img height="200" src="gameplay.png">
+<img height="200" src="imgs/gameplay.png">
+<img height="200" src="imgs/gameplay_character.png">
 
 ## Meet the team
 1. Numens - programmer

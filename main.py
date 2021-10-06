@@ -8,6 +8,16 @@ import datetime
 from os import system, name
 from typing import Dict, Any
 
+with open(os.devnull, 'w') as f:
+    # disable stdout
+    oldstdout = sys.stdout
+    sys.stdout = f
+
+    from pygame import mixer
+
+    # enable stdout
+    sys.stdout = oldstdout
+
 # ===============================================================================================
 # ========================================Game_Inports===========================================
 # ===============================================================================================
@@ -28,6 +38,7 @@ def get_input(string: str, valid_options: list) -> str:
         user_input = input(string)
         if user_input in valid_options:
             return user_input
+        print("    incorrect input ^")
 
 def session_counter(filename="adventure_colussus_session_counter.dat"):
     """
@@ -149,13 +160,19 @@ def character_generator():
 
 
 def new_character(CLEAR_SCREEN='cls'):
-    print_text(
-        "\n > You have chosen to create a new game: Redirecting...", 2)
+    # print_text(
+    #     "\n > You have chosen to create a new game: Redirecting...", 2)
+
+    redirect = {
+        "\n > You have chosen to create a new game: ": 2,
+        "Redirecting...": 2
+    }
+
+    print_block(redirect)
     system(CLEAR_SCREEN)
-    screen_line()
     # print('  \n  We will begin with creating your character:                                        Quick tip: Choose wisely')
     line1 = '  \n  We will begin with creating your character:'
-    line2 = 'Quick tip: Choose wisely'
+    line2 = 'Choose wisely'
     print(line1 + line2.rjust(118-(len(line1[3:])), " "))
     screen_line()
     time.sleep(0.5)
@@ -169,18 +186,18 @@ def main_menu(CLEAR_SCREEN='cls'):
     This is where everything to do with the main game is. This includes all functions in one
     way or another.
     """
+
     __version__ = 0.2
     time.sleep(0.5)
     time.sleep(0.5)
-    show_date_and_time = datetime.datetime.now().strftime("%d.%m.%Y %H:%M")
-    screen_line()
+    show_date_and_time = datetime.datetime.now().strftime("%d %H:%M")
     # print('\n  <Adventure Colossus>     session:', session_count, '| version:', __version__,
     # '| current date:', show_date_and_time, '| date of creation: 9.2.2021')
 
     title1 = f"\n  <Adventure Colossus>"
 
     a = len(title1)
-    title2 = f"session: {session_count} | current date: {show_date_and_time} | date of creation: 9.2.2021 | version: {__version__} "
+    title2 = f"s~{session_count} | v{__version__} "
     print(title1 + title2.rjust(118-a, " "))
     screen_line()
     time.sleep(0.5)
@@ -196,20 +213,26 @@ def main_menu(CLEAR_SCREEN='cls'):
         " > [4] Credits\n": 0.5
     }
     print_block(create_load_menu)
-    choice = get_input("\n  > ", ['1', '2', '3', '4'])
+    while True:
 
-    if choice == '1':
-        new_character()
+        choice = get_input("\n  > ", ['1', '2', '3', '4'])
 
-    elif choice == '4':
-        credits = {
-        "   Numens\n":0.3,
-        "   r0nnyn\n":0.3
-        }
+        if choice == '1':
+            new_character()
 
-        print_block(credits)
-        print()
-        logo()
+        elif choice == '4':
+            credits = {
+            "   Numens\n":0.3,
+            "   r0nnyn\n":0.3
+            }
+
+            print_block(credits)
+            print()
+            logo()
 
 if __name__ == '__main__':
+    song = "C:/Users/sbenf/Desktop/Text RPG/magic-forest-kevin-macleod-main-version-04-20-8004.mp3"
+    mixer.init()
+    mixer.music.load(song)
+    mixer.music.play()
     main_menu()
